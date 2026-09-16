@@ -59,7 +59,7 @@ Because \(\phi^{-1} \approx 0.6180339887\), the external noise component shrinks
 ```python
 """
 NewSat Communications Ltd. - Reference Simulation Engine
-Project: CleanSky MS-GD-ERS (n=3 Hardware-Safe Configuration)
+Project: NewSat ASIC MS-GD-ERS (n=3 Hardware-Safe Configuration)
 Language: Python 3.x (Strict IEEE 754 Float Verification)
 """
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     raw_noise_sum = sum(simulated_external_noise)
     saved_ratio = (1.0 - (results["Net Transmitted Noise Error"] / raw_noise_sum)) * 100
     print(f" Raw Untreated Transmitted Noise Sum     : {raw_noise_sum:.4f}")
-    print(f" CleanSky System Attenuation Efficiency  : {saved_ratio:.2f}% Realized Reduction")
+    print(f" NewSat ASIC System Attenuation Efficiency  : {saved_ratio:.2f}% Realized Reduction")
     print("=" * 70)
 ```
 
@@ -149,7 +149,7 @@ To prevent hardware saturation and ensure optimal operation within current engin
 The analog feed is passed through a high-frequency analog multi-stage operational amplifier network configured with high-precision laser-trimmed resistors matching the Golden Ratio ratio (\(1 : 1.6180339887\)). By capping the modulation matrix to \(n=3\), the voltage scaling factor stays safely below **\(4.24\times\)**, fully neutralizing any risk of localized component dielectric breakdown or unintended arc-overs inside standard civilian satellite hardware.
 
 ### 4.2. LNB Cascaded Down-Converter Layout (User Side)
-The consumer receiver features an integrated **NewSat CleanSky ASIC Demodulator Unit**. This chip processes incoming signal streams through a series of analog filtering blocks configured to reverse the initial scaling step:
+The consumer receiver features an integrated **NewSat ASIC Demodulator Unit**. This chip processes incoming signal streams through a series of analog filtering blocks configured to reverse the initial scaling step:
 
 * **Stage 1 Unfold:** Scale by \(\phi^{-1}\) (\(\approx 0.618\)) \(\rightarrow\) First wave of external noise components is reduced.
 * **Stage 2 Unfold:** Scale by \(\phi^{-1}\) (\(\approx 0.618\)) \(\rightarrow\) Intermediate channel interference is attenuated.
@@ -168,7 +168,7 @@ The consumer receiver features an integrated **NewSat CleanSky ASIC Demodulator 
 
 ## 5. CONCLUSION & LAB REVIEW
 
-Project **CleanSky** transitions the Golden Ratio Dynamic Entropy Recirculation System from an abstract mathematical curiosium into a practical, highly resilient framework for analog satellite broadcast links. By managing the cascade depth strictly at \(n=3\), NewSat successfully leverages the properties of geometric noise convergence without risking signal clipping or hardware saturation.
+**NewSat ASIC** transitions the Golden Ratio Dynamic Entropy Recirculation System from an abstract mathematical curiosium into a practical, highly resilient framework for analog satellite broadcast links. By managing the cascade depth strictly at \(n=3\), NewSat successfully leverages the properties of geometric noise convergence without risking signal clipping or hardware saturation.
 
 Mathematicians and engineers can run the attached `NewSatEngine` verification script to observe how external noise vectors are effectively managed through the application of golden ratio scaling principles.
 
